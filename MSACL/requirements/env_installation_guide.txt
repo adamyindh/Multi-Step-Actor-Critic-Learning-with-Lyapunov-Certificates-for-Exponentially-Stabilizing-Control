@@ -1,0 +1,39 @@
+########################################################################
+# MSACL Project Environment Configuration Guide
+# Applicable Environment: Anaconda + Python 3.10
+# Environment Name: MSACL
+########################################################################
+
+1. Open Anaconda Prompt
+   - Search for and launch "Anaconda Prompt" in the Start Menu
+
+2. Create Virtual Environment
+   - Execute command:
+   conda create -n MSACL python=3.10 -y
+
+3. Activate Environment
+   - Execute command:
+   conda activate MSACL
+
+4. Navigate to Project Directory
+   - Execute command:(replace with your actual path)
+   cd C:\RL_Projects\MSACL
+
+5. Install Core Dependencies
+   - Execute command:
+   pip install -r requirements.txt
+
+
+6. (Optional) Install Jupyter Tools
+   - For Notebook support, execute:
+   pip install jupyter ipykernel
+  
+7. Install Project in Editable Mode
+   - Execute command:
+   pip install -e .
+   (This enables real-time code changes without reinstallation)
+
+8. Verify Environment Configuration
+   - Run this command to check PyTorch functionality (especially GPU support):
+   python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
+   (If output shows "CUDA available: True", GPU configuration is successful.)
