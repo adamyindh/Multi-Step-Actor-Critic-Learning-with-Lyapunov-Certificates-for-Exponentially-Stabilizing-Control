@@ -75,15 +75,16 @@ class NstepReplayBuffer:
 
     def __get_RAM__(self):
         """
-        Calculate the actual memory usage of Tensor storage (in MB)
+        Calculate the actual memory usage of stored valid data (in MB)
         """
         total_bytes = 0
+        if self.size == 0:
+            return 0.0
         for key in self.n_step_buf.keys():
             arr = self.n_step_buf[key]
             if isinstance(arr, np.ndarray):
-                total_bytes += arr.nbytes     
-        used_bytes = total_bytes * (self.size / self.max_size) if self.max_size > 0 else 0
-        used_mb = used_bytes / (1024 * 1024)
+                total_bytes += arr[:self.size].nbytes     
+        used_mb = total_bytes / (1024 * 1024)
         return round(used_mb, 2)
     
 
